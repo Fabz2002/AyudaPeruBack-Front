@@ -1,0 +1,10 @@
+<div [ngClass]="{
+    'closed-sidebar' : globals.toggleSidebar,
+    'closed-sidebar-md' : globals.toggleSidebarMobile,
+    'settings-open' : globals.toggleThemeOptions,
+    'closed-sidebar-open': globals.sidebarHover || globals.toggleSidebarMobile,
+    'header-menu-open' : globals.toggleHeaderMobile,
+    'drawer-open' : globals.toggleDrawer,
+    'fixed-footer' : globals.toggleFixedFooter
+    }" [class]="'app-container app-theme-white'">
+</div>

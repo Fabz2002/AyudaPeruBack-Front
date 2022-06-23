@@ -1,0 +1,5 @@
+package com.ayudaperu.app.models;
+
+public class DetalleDonacion {
+
+}

@@ -1,0 +1,5 @@
+package com.ayudaperu.app.viewmodels;
+
+public class DonacionViewModel {
+
+}

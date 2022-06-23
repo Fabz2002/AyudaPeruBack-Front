@@ -1,0 +1,48 @@
+package com.ayudaperu.app.models;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tipodonacion")
+public class Tipodonacion {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long idtipodonacion ;
+
+	private String nombretipo;
+
+	public Tipodonacion() {
+		
+	}
+	
+	public Tipodonacion(long idtipodonacion, String nombretipo) {
+		super();
+		this.idtipodonacion = idtipodonacion;
+		this.nombretipo = nombretipo;
+	}
+
+	public long getIdtipodonacion() {
+		return idtipodonacion;
+	}
+
+	public void setIdtipodonacion(long idtipodonacion) {
+		this.idtipodonacion = idtipodonacion;
+	}
+
+	public String getNombretipo() {
+		return nombretipo;
+	}
+
+	public void setNombretipo(String nombretipo) {
+		this.nombretipo = nombretipo;
+	}
+	
+	
+
+}

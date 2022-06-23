@@ -1,0 +1,101 @@
+package com.ayudaperu.app.models;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "donacionesm")
+public class DonacionM {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	
+	@Column(name = "monto", length = 60, nullable = false)
+	private double monto;
+
+	@Column(name = "numtarjeta", length = 60, nullable = false)
+	private String numtarjeta;
+
+	@Column(name = "mesexpira", length = 60, nullable = false)
+	private String mesexpira;
+	
+	@Column(name = "anioexpira", length = 60, nullable = false, unique = true)
+	private String anioexpira;
+
+	@Column(name = "nomtarjeta", length = 60, nullable = false)
+	private String nomtarjeta;
+
+	public DonacionM() {
+		
+	}
+
+	public DonacionM(long id, double monto, String numtarjeta, String mesexpira, String anioexpira,
+			String nomtarjeta) {
+		super();
+		this.id = id;
+		this.monto = monto;
+		this.numtarjeta = numtarjeta;
+		this.mesexpira = mesexpira;
+		this.anioexpira = anioexpira;
+		this.nomtarjeta = nomtarjeta;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public double getMonto() {
+		return monto;
+	}
+
+	public void setMonto(double monto) {
+		this.monto = monto;
+	}
+
+	public String getNumtarjeta() {
+		return numtarjeta;
+	}
+
+	public void setNumtarjeta(String numtarjeta) {
+		this.numtarjeta = numtarjeta;
+	}
+
+	public String getMesexpira() {
+		return mesexpira;
+	}
+
+	public void setMesexpira(String mesexpira) {
+		this.mesexpira = mesexpira;
+	}
+
+	public String getAnioexpira() {
+		return anioexpira;
+	}
+
+	public void setAnioexpira(String anioexpira) {
+		this.anioexpira = anioexpira;
+	}
+
+	public String getNomtarjeta() {
+		return nomtarjeta;
+	}
+
+	public void setNomtarjeta(String nomtarjeta) {
+		this.nomtarjeta = nomtarjeta;
+	}
+	
+}

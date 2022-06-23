@@ -1,0 +1,106 @@
+package com.ayudaperu.app.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "donacionesnm")
+public class DonacionNM {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@OneToOne private Donacion donacion;
+	@OneToOne private TipoDNM tipodnm;
+	
+	@Column(name = "descripcion", length = 60, nullable = false)
+	private String descripcion;
+
+	@Column(name = "cantidad", length = 60, nullable = false)
+	private int cantidad;
+
+	@Column(name = "valorunitario", length = 60, nullable = false)
+	private double valorunitario;
+	
+	@Column(name = "total", length = 60, nullable = false, unique = true)
+	private double total;
+
+	public DonacionNM() {
+		
+	}
+
+	public DonacionNM(long id, Donacion donacion, TipoDNM tipodnm, String descripcion, int cantidad,
+			double valorunitario, double total) {
+		super();
+		this.id = id;
+		this.donacion = donacion;
+		this.tipodnm = tipodnm;
+		this.descripcion = descripcion;
+		this.cantidad = cantidad;
+		this.valorunitario = valorunitario;
+		this.total = total;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Donacion getDonacion() {
+		return donacion;
+	}
+
+	public void setDonacion(Donacion donacion) {
+		this.donacion = donacion;
+	}
+
+	public TipoDNM getTipodnm() {
+		return tipodnm;
+	}
+
+	public void setTipodnm(TipoDNM tipodnm) {
+		this.tipodnm = tipodnm;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public double getValorunitario() {
+		return valorunitario;
+	}
+
+	public void setValorunitario(double valorunitario) {
+		this.valorunitario = valorunitario;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}	
+}

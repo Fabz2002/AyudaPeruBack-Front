@@ -1,0 +1,58 @@
+package com.ayudaperu.app.controllers;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ayudaperu.app.exceptions.ResourceNotFoundException;
+import com.ayudaperu.app.models.DonacionM;
+import com.ayudaperu.app.repository.DonacionMRepository;
+
+@RestController
+@RequestMapping("/api/v1")
+@CrossOrigin(origins="http://localhost:4200/")
+public class DonacionMController {
+	@Autowired
+	private DonacionMRepository repository;
+	
+	//Listar todas las donaciones
+	@GetMapping("/donacionesm")
+	public List<DonacionM> listarDonacionesM(){
+		return repository.findAll();
+	}
+	//Guardar y Editar donacion monetaria
+	@PostMapping("/donacionm")
+	public DonacionM guardarDonacionM(@RequestBody DonacionM donacionM) {
+		return repository.save(donacionM);
+	}
+	
+	//Método para buscar donacion monetaria
+	@GetMapping("/donacionesm/{id}")
+	public ResponseEntity<DonacionM>obtenerDonacionM(@PathVariable Long id){
+		DonacionM donacionM = repository.findById(id)
+			.orElseThrow(()->new ResourceNotFoundException("No existe la donación monetaria con el Id: " + id));
+		return ResponseEntity.ok(donacionM);
+	}
+	
+	//Método para eliminar donacion monetaria
+	@DeleteMapping("/donacionm/{id}")
+	public ResponseEntity<Map<String,Boolean>> eliminarDonacionM(@PathVariable Long id){
+		DonacionM donacionM = repository.findById(id)
+				.orElseThrow(()->new ResourceNotFoundException("No existe la donación monetaria con el Id: " + id));
+		repository.delete(donacionM);
+		Map<String, Boolean> respuesta = new HashMap<>();
+		respuesta.put("eliminar",Boolean.TRUE);
+		return ResponseEntity.ok(respuesta);
+	}
+}

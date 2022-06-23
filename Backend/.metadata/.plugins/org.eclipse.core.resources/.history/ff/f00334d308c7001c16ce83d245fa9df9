@@ -1,0 +1,5 @@
+package com.clases.springboot.app.models.entity;
+
+public class Cliente {
+
+}

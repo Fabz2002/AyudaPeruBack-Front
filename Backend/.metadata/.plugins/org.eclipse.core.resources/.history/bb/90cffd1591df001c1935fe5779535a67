@@ -1,0 +1,52 @@
+package com.ayudaperu.app.models;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "detalledonaciones")
+public class DetalleDonacion {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@Column(name = "monto", length = 60, nullable = false)
+	private double monto;
+
+	@Column(name = "numtarjeta", length = 60, nullable = false)
+	private String numtarjeta;
+
+	@Column(name = "mesexpira", length = 60, nullable = false)
+	private String mesexpira;
+	
+	@Column(name = "anioexpira", length = 60, nullable = false, unique = true)
+	private String anioexpira;
+
+	@Column(name = "nomtarjeta", length = 60, nullable = false)
+	private String nomtarjeta;
+
+	//donacion nm
+	
+	@OneToOne private Tipodnm tipodnm;
+	
+	@Column(name = "descripcion", length = 60, nullable = false)
+	private String descripcion;
+
+	@Column(name = "cantidad", length = 60, nullable = false)
+	private int cantidad;
+
+	@Column(name = "valorunitario", length = 60, nullable = false)
+	private double valorunitario;
+	
+	@Column(name = "total", length = 60, nullable = false, unique = true)
+	private double total;
+
+
+}

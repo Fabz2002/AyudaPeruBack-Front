@@ -1,0 +1,13 @@
+1651704993020	Move files
+1651755406540	Move files
+1651849027779	Delete element
+1651849271400	Rename package 'com.clases.springboot.app.dao'
+1652221380400	Move file
+1652222373199	Move file
+1652224948543	Rename resource 'nuevaDonacionNoMonetaria.html'
+1652237433206	Rename type 'DonacionNoMonetariaController'
+1652237478096	Rename resource 'DonacionesNoMonetarias'
+1652237657455	Rename type 'IDonacionNoMonetariaService'
+1652237689052	Rename type 'ImpleDonacionNoMonetariaService'
+1652237768903	Rename type 'IDonacionNoMonetariaDao'
+1652237867279	Rename type 'DonacionNoMonetaria'

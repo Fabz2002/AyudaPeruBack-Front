@@ -1,0 +1,5 @@
+package com.clases.app.controller;
+
+public class IndexController {
+
+}

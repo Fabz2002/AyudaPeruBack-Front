@@ -1,0 +1,42 @@
+package com.ayudaperu.app.viewmodels;
+
+import javax.persistence.Column;
+import javax.persistence.OneToOne;
+
+import com.ayudaperu.app.models.Donacion;
+import com.ayudaperu.app.models.Tipodnm;
+
+public class DetalleDonacionViewModel {
+
+	private long id;
+	
+	private Tipodnm tipodnm;
+	private Donacion donacion;
+	
+	
+	private double monto;
+	private String numtarjeta;
+
+	@Column(name = "mesexpira", length = 60, nullable = false)
+	private String mesexpira;
+	
+	@Column(name = "anioexpira", length = 60, nullable = false, unique = true)
+	private String anioexpira;
+
+	@Column(name = "nomtarjeta", length = 60, nullable = false)
+	private String nomtarjeta;
+
+	
+	
+	@Column(name = "descripcion", length = 60, nullable = false)
+	private String descripcion;
+
+	@Column(name = "cantidad", length = 60, nullable = false)
+	private int cantidad;
+
+	@Column(name = "valorunitario", length = 60, nullable = false)
+	private double valorunitario;
+	
+	@Column(name = "total", length = 60, nullable = false, unique = true)
+	private double total;
+}

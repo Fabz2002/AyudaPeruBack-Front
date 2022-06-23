@@ -1,0 +1,5 @@
+package com.ayudaperu.app.repository;
+
+public interface TipodocumentoRepository {
+
+}

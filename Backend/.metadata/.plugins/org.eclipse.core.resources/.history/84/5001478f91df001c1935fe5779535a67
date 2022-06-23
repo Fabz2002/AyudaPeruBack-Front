@@ -1,0 +1,58 @@
+package com.ayudaperu.app.controllers;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ayudaperu.app.exceptions.ResourceNotFoundException;
+import com.ayudaperu.app.models.DonacionNM;
+import com.ayudaperu.app.repository.DonacionNMRepository;
+
+@RestController
+@RequestMapping("/api/v1")
+@CrossOrigin(origins="http://localhost:4200/")
+public class DonacionNMController {
+	@Autowired
+	private DonacionNMRepository repository;
+	
+	//Listar todas las donaciones no monetarias
+	@GetMapping("/donacionesnm")
+	public List<DonacionNM> listarDonacionesNM(){
+		return repository.findAll();
+	}
+	//Guardar y Editar donacion no monetaria
+	@PostMapping("/donacionnm")
+	public DonacionNM guardarDonacionNM(@RequestBody DonacionNM donacionNM) {
+		return repository.save(donacionNM);
+	}
+	
+	//Método para buscar donacion no monetaria
+	@GetMapping("/donacionesnm/{id}")
+	public ResponseEntity<DonacionNM>obtenerDonacionNM(@PathVariable Long id){
+		DonacionNM donacionNM = repository.findById(id)
+			.orElseThrow(()->new ResourceNotFoundException("No existe la donación no monetaria con el Id: " + id));
+		return ResponseEntity.ok(donacionNM);
+	}
+	
+	//Método para eliminar donacion no monetaria
+	@DeleteMapping("/donacionnm/{id}")
+	public ResponseEntity<Map<String,Boolean>> eliminarDonacionNM(@PathVariable Long id){
+		DonacionNM donacionNM = repository.findById(id)
+				.orElseThrow(()->new ResourceNotFoundException("No existe la donación no monetaria con el Id: " + id));
+		repository.delete(donacionNM);
+		Map<String, Boolean> respuesta = new HashMap<>();
+		respuesta.put("eliminar",Boolean.TRUE);
+		return ResponseEntity.ok(respuesta);
+	}
+}

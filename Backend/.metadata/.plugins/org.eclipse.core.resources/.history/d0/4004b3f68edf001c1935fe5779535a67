@@ -1,0 +1,178 @@
+package com.ayudaperu.app.models;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "donaciones")
+public class Donacion {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@OneToOne private Pais pais;
+	@OneToOne private Tipodocumento tipodocumento;
+
+	
+	
+	@Column(name = "nombre", length = 60, nullable = false)
+	private String nombre;
+
+	@Column(name = "apellido", length = 60, nullable = false)
+	private String apellido;
+
+	@Column(name = "numerodoc", length = 60, nullable = false)
+	private String numerodoc;
+	
+	@Column(name = "correo", length = 60, nullable = false, unique = true)
+	private String email;
+
+	@Column(name = "direccion", length = 60, nullable = false)
+	private String direccion;
+
+	@Column(name = "telefono", length = 60, nullable = false)
+	private String telefono;
+
+	@Column(name = "celular", length = 60, nullable = false, unique = true)
+	private String celular;
+
+	@Column(name = "fecha")
+	private Date fecha;
+	
+	public Donacion() {
+		
+	}
+
+	public Donacion(long id, Pais pais, Tipodocumento tipodocumento, String nombre, String apellido, String numerodoc,
+			String email, String direccion, String telefono, String celular, Date fecha) {
+		super();
+		this.id = id;
+		this.pais = pais;
+		this.tipodocumento = tipodocumento;
+		this.donacionM=donacionM;
+		this.donacionNM=donacionNM;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.numerodoc = numerodoc;
+		this.email = email;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.celular = celular;
+		this.fecha = fecha;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
+
+	public Tipodocumento getTipodocumento() {
+		return tipodocumento;
+	}
+
+	public void setTipodocumento(Tipodocumento tipodocumento) {
+		this.tipodocumento = tipodocumento;
+	}
+	
+	
+
+	public DonacionM getDonacionM() {
+		return donacionM;
+	}
+
+	public void setDonacionM(DonacionM donacionM) {
+		this.donacionM = donacionM;
+	}
+
+	public DonacionNM getDonacionNM() {
+		return donacionNM;
+	}
+
+	public void setDonacionNM(DonacionNM donacionNM) {
+		this.donacionNM = donacionNM;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public String getNumerodoc() {
+		return numerodoc;
+	}
+
+	public void setNumerodoc(String numerodoc) {
+		this.numerodoc = numerodoc;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+}

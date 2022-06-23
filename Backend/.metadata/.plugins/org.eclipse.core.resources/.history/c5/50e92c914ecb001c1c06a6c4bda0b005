@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+		<h1
+			class="text-secondary border border-sucess border-top-0 border-left-0 border-right-0"
+			th:text="${titulo}"></h1>
+		<a href="listarDonaciones">
+			<button class="btn btn-secondary">Regresar</button>
+		</a>
+		<form th:action="@{/nuevaDonacion}" th:object="${donacion}"
+			method="post">
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Nombre:</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{nombreDonador}" class="form-control"
+						placeholder="Nombre" th:errorclass="'form-control alert-danger'" />
+					<small class="form-text text-danger"
+						th:if="${#fields.hasErrors('nombreDonador')}"
+						th:errors="*{nombreDonador}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Apellido</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{apellidoDonador}"
+						class="form-control" placeholder="Apellido"
+						th:errorclass="'form-control alert-danger'"> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('apellidoDonador')}"
+						th:errors="*{apellidoDonador}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Tipo Documento</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{tipoDocumento}" class="form-control"
+						placeholder="Tipo Documento"
+						th:errorclass="'form-control alert-danger'"> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('tipoDocumento')}"
+						th:errors="*{tipoDocumento}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Nro Documento</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{numeroDocumento}"
+						class="form-control" placeholder="Número Documento"
+						th:errorclass="'form-control alert-danger'"> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('numeroDocumento')}"
+						th:errors="*{numeroDocumento}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Correo</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{email}" class="form-control"
+						placeholder="Email" th:errorclass="'form-control alert-danger'">
+					<small class="form-text text-danger"
+						th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">País</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{pais}" class="form-control"
+						placeholder="País" th:errorclass="'form-control alert-danger'">
+					<small class="form-text text-danger"
+						th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Dirección</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{direccion}" class="form-control"
+						placeholder="Dirección"
+						th:errorclass="'form-control alert-danger'"> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Teléfono</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{telefono}" class="form-control"
+						placeholder="Teléfono" th:errorclass="'form-control alert-danger'">
+					<small class="form-text text-danger"
+						th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Celular</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{celular}" class="form-control"
+						placeholder="Celular" th:errorclass="'form-control alert-danger'">
+					<small class="form-text text-danger"
+						th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Fecha</label>
+				<div class="col-sm-6">
+					<input type="date" th:field="*{fecha}" class="form-control"
+						th:errorclass="'form-control alert-danger'"> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Monto</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{montoDonado}" class="form-control"
+						th:errorclass="'form-control alert-danger'"><small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('montoDonado')}"
+						th:errors="*{montoDonado}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Nro Tarjeta</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{numeroTarjeta}" class="form-control"
+						placeholder="Número de Tarjeta"
+						th:errorclass="'form-control alert-danger'"> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('numeroTarjeta')}"
+						th:errors="*{numeroTarjeta}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Mes Expira</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{mesExpira}" class="form-control"
+						placeholder="Mes de Expiración"
+						th:errorclass="'form-control alert-danger'"> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('mesExpira')}" th:errors="*{mesExpira}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Año Expira</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{anioExpira}" class="form-control"
+						placeholder="Año de Expiración"
+						th:errorclass="'form-control alert-danger'"> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('anioExpira')}"
+						th:errors="*{anioExpira}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Nombre Tarjeta</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{nombreTarjeta}" class="form-control"
+						placeholder="Nombre de la tarjeta"
+						th:errorclass="'form-control alert-danger'"> <small
+						class="form-text text-danger"
+						th:if="${#fields.hasErrors('nombreTarjeta')}"
+						th:errors="*{nombreTarjeta}"></small>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<input type="submit" value="Registrar Donación"
+						class="btn btn-primary" /> <input type="hidden" th:field="*{id}" />
+				</div>
+			</div>
+		</form>
+		<a href="listarDonaciones">
+			<button class="btn btn-secondary">Regresar</button>
+		</a>
+	</div>
+</body>
+</html>

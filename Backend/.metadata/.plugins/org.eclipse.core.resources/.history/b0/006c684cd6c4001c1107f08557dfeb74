@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="${mensaje}">----</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" 
+		integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
+		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<link rel="stylesheet" th:href="@{/css/style.css}"/>
+<script type="text/javascript" th:src="@{/js/funciones.js}"></script>	
+<body>
+	<div class="bd-example">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</nav>
+	</div>
+	<div class="container">
+		<div>
+			<h1 th:text="${mensaje}"></h1>
+			<img alt="" th:src="@{/images/imagen.jpg}">
+			<input type="button" value="EJECUTAR" onclick="alarma();">
+			
+			<label th:text="${variable} + 2"></label>
+			<!-- <span th:text="$({variable} % 2 == 0)? 'Cero':'Uno'"></span> -->
+			<img alt="" th:attr="src=@{/images/imagen.jpg},title=#{logo},alt=#{logo}"/>
+			<table>
+				<tr th:each="x:${list}">
+					<td th:text="${x}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="container">
+		<hr>
+		<footer>
+			<p>&copy; Company <label th:text="${fecha}"></label></p>
+			<p><label th:text="${lista.get(1)}"></label></p>
+			<p><label th:text="${lista.get(2)}"></label></p>
+			<p><label th:text="${lista.get(3)}"></label></p>
+		</footer>
+	</div>
+</body>
+</html>
